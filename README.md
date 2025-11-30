@@ -233,7 +233,7 @@ grid.spacing = (1, 1, 1)
 grid.point_data["colors"] = data_rgba.reshape(-1, 4)
 ```
 
-The `ImageData` class represents a regular grid where each point has associated data. The spacing parameter controls the physical size of each voxel; changing the third value would stretch the volume along the Z-axis, which can be useful for adjusting aspect ratios if slice spacing differs from pixel spacing.
+The `ImageData` class represents a regular grid where each point has associated data. The spacing parameter controls the physical size of each voxel. Changing the third value would stretch the volume along the Z-axis, which can be useful for adjusting aspect ratios if slice spacing differs from pixel spacing.
 
 #### Interactive Rendering
 
@@ -256,7 +256,7 @@ The volume is rendered with shading enabled for depth perception and a matte fin
 
 ### Prerequisites
 
-Before running the scripts, ensure you have all required dependencies installed. The project requires Python 3.8 or higher and several scientific computing libraries.
+Before running the scripts, ensure you have all required dependencies installed. The project requires Python 3.11.x or higher (it was tested on 3.11) and several scientific computing libraries.
 
 ```bash
 pip install numpy opencv-python imageio tensorflow natsort tqdm pystackreg pyvista
@@ -303,7 +303,7 @@ Execute the main processing script from the project root directory.
 python build_volume_v3.py
 ```
 
-The script will process images through all five steps automatically. Progress bars will indicate the status of each step. Processing time depends on the number of images, image size, and available computational resources. On an M1 MacBook, expect several minutes to hours depending on the dataset size.
+The script will process images through all five steps automatically. Progress bars will indicate the status of each step. Processing time depends on the number of images, image size, and available computational resources. On an M1 MacBook, expect several minutes to hours depending on the dataset size. (3 initial images & 25 interpolations / gap = 20 minutes)
 
 The script includes resume capability: if interrupted, it will skip already-processed interpolated frames when restarted, allowing you to continue from where it left off.
 
